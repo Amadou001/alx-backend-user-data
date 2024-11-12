@@ -33,6 +33,8 @@ def before_request_handling():
             pass
         else:
             return
+    else:
+        return
     if not auth.authorization_header(request):
         abort(401)
     if not auth.current_user(request):
