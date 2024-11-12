@@ -19,7 +19,7 @@ class Auth():
             return False
         else:
             return True
-    
+
     def authorization_header(self, request=None) -> str:
         """
             args: request: Flask request object
@@ -27,7 +27,7 @@ class Auth():
         if request is None or 'Authorization' not in request.headers:
             return None
         return request.headers['Authorization']
-    
+
     def current_user(self, request=None) -> type('User'):
         """
             args: request: Flask request object
