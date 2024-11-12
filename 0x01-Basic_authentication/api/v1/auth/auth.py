@@ -2,13 +2,14 @@
 """ Module for Authentification
 """
 from flask import request
+from typing import List, TypeVar
 
 
 class Auth:
     """template for all authentication system
     """
 
-    def require_auth(self, path: str, excluded_paths: list[str]) -> bool:
+    def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ Authentification management for routes
         """
         if path is None or excluded_paths is None or len(excluded_paths) == 0:
@@ -28,7 +29,7 @@ class Auth:
             return None
         return request.headers['Authorization']
 
-    def current_user(self, request=None) -> type('User'):
+    def current_user(self, request=None) -> TypeVar('User'):
         """
             args: request: Flask request object
         """
