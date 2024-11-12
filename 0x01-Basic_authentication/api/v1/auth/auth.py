@@ -4,7 +4,7 @@
 from flask import request
 
 
-class Auth():
+class Auth:
     """template for all authentication system
     """
 
