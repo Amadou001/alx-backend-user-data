@@ -27,7 +27,9 @@ def before_request_handling():
     """ handling of before request
     """
     if auth:
-        if auth.require_auth(request.path, ['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']):
+        if auth.require_auth(request.path, ['/api/v1/status/',
+                                            '/api/v1/unauthorized/',
+                                            '/api/v1/forbidden/']):
             pass
         else:
             return
@@ -36,11 +38,13 @@ def before_request_handling():
     if not auth.current_user(request):
         abort(403)
 
+
 @app.errorhandler(404)
 def not_found(error) -> str:
     """ Not found handler
     """
     return jsonify({"error": "Not found"}), 404
+
 
 @app.errorhandler(401)
 def unauthorized_error(error) -> str:
@@ -48,12 +52,12 @@ def unauthorized_error(error) -> str:
     """
     return jsonify({"error": "Unauthorized"}), 401
 
+
 @app.errorhandler(403)
 def forbidden_error(error) -> str:
     """Forbidden error 403 status code
     """
     return jsonify({"error": "Forbidden"}), 403
-
 
 
 if __name__ == "__main__":
